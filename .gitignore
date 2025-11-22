@@ -64,6 +64,7 @@ src/typings/*
 # other
 build
 public/index.js
+public/index.js.LICENSE.txt
 public/index.js.map
 public/*.worker.js
 public/*.worker.js.map

@@ -1,8 +1,12 @@
 import Storage from 'electron-json-storage';
+import * as remote from '@electron/remote';
 
 import Root from './Root';
 
 const key = 'LocalSetting';
+
+/** データ保存先指定 */
+Storage.setDataPath(remote.app.getPath('userData'));
 
 /** 現在のファイルバージョン。互換性が保てなくなったら上げる。 */
 const versionCurrent = 1;

@@ -1,5 +1,6 @@
 import ClassNames from 'classnames';
-import { Menu, remote } from 'electron';
+import { Menu } from 'electron';
+import * as remote from '@electron/remote';
 import * as React from 'react';
 import PageCalendar from 'src/view/page/calendar';
 import PageImport from 'src/view/page/import';
@@ -7,8 +8,8 @@ import PageSetting from 'src/view/page/setting';
 import PageSheet from 'src/view/page/sheet';
 import PageStart from 'src/view/page/start';
 
-import * as LayoutStyles from '../../Layout.css';
-import * as Styles from './SideBar.css';
+import LayoutStyles from '../../Layout.css';
+import Styles from './SideBar.css';
 import SideBarBtn from './SideBarBtn';
 
 interface IProps {

@@ -2,8 +2,8 @@ import ClassNames from 'classnames';
 import * as React from 'react';
 import Materialicon from 'src/view/widget/material-icon';
 
-import * as BasicStyles from '../../Basic.css';
-import * as Styles from './SettingBtn.css';
+import BasicStyles from '../../Basic.css';
+import Styles from './SettingBtn.css';
 
 interface IProps {
   onClicked: () => void;

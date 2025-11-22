@@ -11,7 +11,7 @@ import IStoreState from 'src/state/IStoreState';
 import Store from 'src/state/Store';
 import * as UiActions from 'src/state/ui/Actions';
 import * as IYearMonthDayDateUtils from 'src/util/IYearMonthDayDateUtils';
-import * as BasicStyles from 'src/view/Basic.css';
+import BasicStyles from 'src/view/Basic.css';
 import { v4 as UUID } from 'uuid';
 
 import * as Styles from './Main.css';
@@ -50,7 +50,7 @@ class Main extends React.Component<ILocalProps, IState> {
     super(props);
     global.console.assert(
       this.props.accountKind === DocTypes.AccountKind.Assets ||
-        this.props.accountKind === DocTypes.AccountKind.Liabilities,
+      this.props.accountKind === DocTypes.AccountKind.Liabilities,
     );
     if (props.editAccountId !== null) {
       const account = DocStateMethods.basicAccounts(props.doc)[props.editAccountId];
@@ -111,9 +111,8 @@ class Main extends React.Component<ILocalProps, IState> {
     const header = (
       <div className={dialogHeaderClass}>
         <h5 className="modal-title" id="exampleModalLabel">
-          {`${this.props.accountKind === DocTypes.AccountKind.Assets ? '資産口座' : '負債口座'}の${
-            this.props.editAccountId !== null ? '編集' : '作成'
-          }`}
+          {`${this.props.accountKind === DocTypes.AccountKind.Assets ? '資産口座' : '負債口座'}の${this.props.editAccountId !== null ? '編集' : '作成'
+            }`}
         </h5>
         <button type="button" id={this.elementIdCloseBtn} className="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>

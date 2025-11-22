@@ -1,5 +1,5 @@
 const path = require('path');
-const hardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = (env) => {
   const prodMode = env !== undefined && env.prod;
@@ -19,25 +19,17 @@ module.exports = (env) => {
     output: {
       path: path.join(__dirname, 'public'),
       filename: 'index.js',
+      globalObject: 'self',
     },
     // ファイルタイプ毎の処理を記述する
     module: {
       rules: [
         {
-          // 正規表現で指定する
           // 拡張子 .ts または .tsx の場合
           test: /\.tsx?$/,
-          // ローダーの指定
           // TypeScript をコンパイルする
           use: 'ts-loader',
-        },
-        {
-          // 拡張子 .ts または .tsx の場合
-          test: /\.tsx?$/,
-          // 事前処理
-          enforce: 'pre',
-          // TypeScript をコードチェックする
-          loader: 'eslint-loader',
+          exclude: /node_modules/,
         },
         {
           test: /\.worker\.js$/,
@@ -46,12 +38,24 @@ module.exports = (env) => {
         {
           // node_modules 以下の css は元のクラス名でロード
           test: /node_modules\/.*\.css$/,
-          loaders: ['style-loader', 'css-loader'],
+          use: ['style-loader', 'css-loader'],
         },
         {
           // src 以下の css は名前衝突回避されたクラス名でロード
           test: /src\/.*\.css$/,
-          loaders: ['thread-loader', 'style-loader', 'css-loader?modules'],
+          use: [
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                esModule: false,
+                modules: {
+                  localIdentName: '[name]__[local]--[hash:base64:5]',
+                  exportLocalsConvention: 'asIs',
+                },
+              },
+            },
+          ],
         },
       ],
     },
@@ -67,6 +71,7 @@ module.exports = (env) => {
       },
     },
     // プラグイン設定
-    plugins: [new hardSourceWebpackPlugin()],
+    plugins: [new ESLintPlugin({ extensions: ['ts', 'tsx'] })],
+
   };
 };

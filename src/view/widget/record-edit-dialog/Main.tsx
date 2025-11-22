@@ -2,7 +2,7 @@ import 'flatpickr/dist/l10n/ja.js';
 import 'src/@types/mdb/modal';
 
 import ClassNames from 'classnames';
-import { remote } from 'electron';
+import * as remote from '@electron/remote';
 import * as React from 'react';
 import * as ReactRedux from 'react-redux';
 import Split from 'split.js';
@@ -21,11 +21,13 @@ import RecordOrderKind from 'src/util/doc/RecordOrderKind';
 import IYearMonthDayDate from 'src/util/IYearMonthDayDate';
 import * as IYearMonthDayDateUtils from 'src/util/IYearMonthDayDateUtils';
 import * as PriceUtils from 'src/util/PriceUtils';
-import * as BasicStyles from 'src/view/Basic.css';
+import BasicStyles from 'src/view/Basic.css';
+import * as NativeDialogUtils from 'src/view/widget/native-dialog-utils';
+import RadioButtonGroup from 'src/view/widget/radio-button-group';
 import MaterialIcon from 'src/view/widget/material-icon';
 import { v4 as UUID } from 'uuid';
 
-import * as Styles from './Main.css';
+import Styles from './Main.css';
 
 /** 新規レコードを示す ID。 */
 const NEW_RECORD_ID = DocTypes.INVALID_ID;
@@ -99,20 +101,20 @@ class Main extends React.Component<ILocalProps, IState> {
       formDefaultValue.recordKind === DocTypes.RecordKind.Outgo && formDefaultValue.categoryId !== null
         ? formDefaultValue.categoryId
         : this.props.dialogRecordAdd.latestFormCategoryOutgo !== DocTypes.INVALID_ID
-        ? this.props.dialogRecordAdd.latestFormCategoryOutgo
-        : DocStateMethods.firstLeafCategoryId(this.props.doc.outgo.rootCategoryId, this.props.doc.outgo.categories);
+          ? this.props.dialogRecordAdd.latestFormCategoryOutgo
+          : DocStateMethods.firstLeafCategoryId(this.props.doc.outgo.rootCategoryId, this.props.doc.outgo.categories);
     const formCategoryIncome =
       formDefaultValue.recordKind === DocTypes.RecordKind.Income && formDefaultValue.categoryId !== null
         ? formDefaultValue.categoryId
         : this.props.dialogRecordAdd.latestFormCategoryIncome !== DocTypes.INVALID_ID
-        ? this.props.dialogRecordAdd.latestFormCategoryIncome
-        : DocStateMethods.firstLeafCategoryId(this.props.doc.income.rootCategoryId, this.props.doc.income.categories);
+          ? this.props.dialogRecordAdd.latestFormCategoryIncome
+          : DocStateMethods.firstLeafCategoryId(this.props.doc.income.rootCategoryId, this.props.doc.income.categories);
     const formAccount =
       formDefaultValue.accountId !== null
         ? formDefaultValue.accountId
         : this.props.dialogRecordAdd.latestFormAccount !== DocTypes.INVALID_ID
-        ? this.props.dialogRecordAdd.latestFormAccount
-        : DocStateMethods.basicAccountOrderMixed(this.props.doc)[0];
+          ? this.props.dialogRecordAdd.latestFormAccount
+          : DocStateMethods.basicAccountOrderMixed(this.props.doc)[0];
     this.state = {
       formKind: formDefaultValue.recordKind,
       formDate: IYearMonthDayDateUtils.toDisplayFormatText(formDefaultValue.date),
@@ -465,8 +467,8 @@ class Main extends React.Component<ILocalProps, IState> {
       !this.state.formAmountIsNegative
         ? null
         : this.state.formKind === DocTypes.RecordKind.Outgo
-        ? Styles.FormInputAmountCellNegativeOutgo
-        : Styles.FormInputAmountCellNegativeIncome,
+          ? Styles.FormInputAmountCellNegativeOutgo
+          : Styles.FormInputAmountCellNegativeIncome,
     );
     const formInputRowAmountTransferClass = ClassNames(
       this.state.formKind === DocTypes.RecordKind.Transfer ? null : Styles.FormInputRowHide,
@@ -1280,10 +1282,7 @@ class Main extends React.Component<ILocalProps, IState> {
       this.resetForNewInput();
     }
     $(`#${this.elementIdFormDate}`).focus();
-    $(`.${Styles.FormNoticeMsg}`)
-      .animate({ opacity: 1.0 }, 0)
-      .delay(1000)
-      .animate({ opacity: 0.0 }, 750);
+    $(`.${Styles.FormNoticeMsg}`).animate({ opacity: 1.0 }, 0).delay(1000).animate({ opacity: 0.0 }, 750);
   }
 
   /// 共通キーダウンイベント処理。

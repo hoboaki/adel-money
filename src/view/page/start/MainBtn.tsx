@@ -1,8 +1,8 @@
 import ClassNames from 'classnames';
 import * as React from 'react';
 
-import * as BasicStyles from './../../Basic.css';
-import * as Styles from './MainBtn.css';
+import BasicStyles from './../../Basic.css';
+import Styles from './MainBtn.css';
 
 interface IProps {
   isEnabled: boolean;

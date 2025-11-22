@@ -12,8 +12,8 @@ import * as IYearMonthDayDateUtils from 'src/util/IYearMonthDayDateUtils';
 import * as PriceUtils from 'src/util/PriceUtils';
 import RecordEditDialog from 'src/view/widget/record-edit-dialog';
 
-import * as LayoutStyles from '../../Layout.css';
-import * as Styles from './Calendar.css';
+import LayoutStyles from '../../Layout.css';
+import Styles from './Calendar.css';
 
 interface IProps {
   doc: DocStates.IState;

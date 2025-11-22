@@ -19,11 +19,11 @@ import * as RecordFilters from 'src/util/doc/RecordFilters';
 import IYearMonthDayDate from 'src/util/IYearMonthDayDate';
 import * as IYearMonthDateUtils from 'src/util/IYearMonthDayDateUtils';
 import * as PriceUtils from 'src/util/PriceUtils';
-import * as BasicStyles from 'src/view/Basic.css';
+import BasicStyles from 'src/view/Basic.css';
 import RecordEditDialog from 'src/view/widget/record-edit-dialog';
 import { v4 as UUID } from 'uuid';
 
-import * as Styles from './Body.css';
+import Styles from './Body.css';
 
 interface ISelectedCellInfo {
   colIdx: number;
@@ -308,7 +308,7 @@ class Body extends React.Component<IProps, IState> {
       accountCarriedData[accountId] = basicAccountIdArray.reduce((prev, basicAccountId) => {
         const sign =
           DocTypes.basicAccountKindToAccountKind(basicAccounts[basicAccountId].kind) !==
-          DocTypes.AccountKind.Liabilities
+            DocTypes.AccountKind.Liabilities
             ? 1
             : -1;
         return prev + sign * accountCarriedData[Number(basicAccountId)];
@@ -320,7 +320,7 @@ class Body extends React.Component<IProps, IState> {
         cellDataArray[colIdx] = basicAccountIdArray.reduce((prev, basicAccountId) => {
           const sign =
             DocTypes.basicAccountKindToAccountKind(basicAccounts[basicAccountId].kind) !==
-            DocTypes.AccountKind.Liabilities
+              DocTypes.AccountKind.Liabilities
               ? 1
               : -1;
           return prev + sign * accountCellDataArray[Number(basicAccountId)][colIdx];

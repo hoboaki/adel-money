@@ -1,13 +1,16 @@
 .Root {
-  font-family: 'Hiragino Kaku Gothic ProN', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial,
+  font-family:
+    'Hiragino Kaku Gothic ProN', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial,
     sans-serif;
   font-size: 10pt;
   height: 100%;
 }
+
 button:focus {
   outline: none;
 }
 
 .NonTitleBarArea {
-  max-height: calc(100% - 22px); /* TitleBar.css:.Base.height の値と合わせる必要あり */
+  max-height: calc(100% - 22px);
+  /* TitleBar.css:.Base.height の値と合わせる必要あり */
 }

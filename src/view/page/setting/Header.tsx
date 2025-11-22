@@ -4,7 +4,7 @@ import IStoreState from 'src/state/IStoreState';
 import * as UiStates from 'src/state/ui/States';
 import MaterialIcon from 'src/view/widget/material-icon';
 
-import * as Styles from './Header.css';
+import Styles from './Header.css';
 
 interface IProps {
   states: UiStates.IPageSetting;

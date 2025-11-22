@@ -1,4 +1,4 @@
-import { remote } from 'electron';
+import * as remote from '@electron/remote';
 
 export const showInfoDialog = (title: string, msg: string, detail: string | undefined): void => {
   const dialog = remote.dialog;

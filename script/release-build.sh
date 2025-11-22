@@ -9,7 +9,7 @@ bash ./script/clean-public.sh
 rm -rf ./build/mac
 
 # ビルド
-export WEBPACK_OPTION=--env.prod && bash ./script/build-impl.sh
+export WEBPACK_OPTION="--env prod" && bash ./script/build-impl.sh
 
 # パッケージング
 NODE_ENV=production electron-builder --mac --x64

@@ -14,7 +14,7 @@ module.exports = (env) => {
     // production は、コードの圧縮やモジュールの最適化が行われる設定となる
     mode: prodMode ? 'production' : 'development',
     // ソースマップのタイプ
-    devtool: prodMode ? '' : 'source-map',
+    devtool: prodMode ? false : 'source-map',
     // 出力先設定 __dirname は node でのカレントディレクトリのパスが格納される変数
     output: {
       path: path.join(__dirname, 'public'),

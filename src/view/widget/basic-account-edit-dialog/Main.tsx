@@ -14,7 +14,7 @@ import * as IYearMonthDayDateUtils from 'src/util/IYearMonthDayDateUtils';
 import BasicStyles from 'src/view/Basic.css';
 import { v4 as UUID } from 'uuid';
 
-import * as Styles from './Main.css';
+import Styles from './Main.css';
 
 interface IProps {
   /** 追加・編集する口座種類。(Assets or Liabilities) */

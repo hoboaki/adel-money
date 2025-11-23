@@ -1,6 +1,6 @@
+import * as remote from '@electron/remote';
 import ClassNames from 'classnames';
 import { ipcRenderer as IpcRenderer } from 'electron';
-import * as remote from '@electron/remote';
 import * as Fs from 'fs';
 import * as React from 'react';
 import DataModelDocRoot from 'src/data-model/doc/Root';

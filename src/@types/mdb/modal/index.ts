@@ -5,6 +5,7 @@
 //   contextMenu(type: string, selector?: any): JQuery;
 // }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface JQuery {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   modal(options?: any): JQuery;

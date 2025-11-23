@@ -1,5 +1,5 @@
-import ClassNames from 'classnames';
 import * as remote from '@electron/remote';
+import ClassNames from 'classnames';
 import * as Fs from 'fs';
 import * as React from 'react';
 import PageStyles from 'src/view/page/Page.css';

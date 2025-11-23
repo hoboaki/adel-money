@@ -22,7 +22,7 @@ class ActionToReducerMapper<S> {
     let newState = state;
     const process = this.works[action.type];
     if (process) {
-      newState = cloneDeep(state as any) as S;
+      newState = cloneDeep(state) as S;
       process(newState, action);
     }
     return newState;

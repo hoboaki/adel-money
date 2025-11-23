@@ -1,5 +1,5 @@
-import ClassNames from 'classnames';
 import * as remote from '@electron/remote';
+import ClassNames from 'classnames';
 import * as Fs from 'fs';
 import * as React from 'react';
 import * as LocalSettingRootUtils from 'src/data-model/local-setting/RootUtils';

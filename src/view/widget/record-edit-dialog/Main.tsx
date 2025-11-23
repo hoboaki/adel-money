@@ -1,8 +1,8 @@
 import 'flatpickr/dist/l10n/ja.js';
 import 'src/@types/mdb/modal';
 
-import ClassNames from 'classnames';
 import * as remote from '@electron/remote';
+import ClassNames from 'classnames';
 import * as React from 'react';
 import * as ReactRedux from 'react-redux';
 import Split from 'split.js';
@@ -22,8 +22,6 @@ import IYearMonthDayDate from 'src/util/IYearMonthDayDate';
 import * as IYearMonthDayDateUtils from 'src/util/IYearMonthDayDateUtils';
 import * as PriceUtils from 'src/util/PriceUtils';
 import BasicStyles from 'src/view/Basic.css';
-import * as NativeDialogUtils from 'src/view/widget/native-dialog-utils';
-import RadioButtonGroup from 'src/view/widget/radio-button-group';
 import MaterialIcon from 'src/view/widget/material-icon';
 import { v4 as UUID } from 'uuid';
 

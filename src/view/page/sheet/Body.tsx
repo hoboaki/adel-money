@@ -308,7 +308,7 @@ class Body extends React.Component<IProps, IState> {
       accountCarriedData[accountId] = basicAccountIdArray.reduce((prev, basicAccountId) => {
         const sign =
           DocTypes.basicAccountKindToAccountKind(basicAccounts[basicAccountId].kind) !==
-            DocTypes.AccountKind.Liabilities
+          DocTypes.AccountKind.Liabilities
             ? 1
             : -1;
         return prev + sign * accountCarriedData[Number(basicAccountId)];
@@ -320,7 +320,7 @@ class Body extends React.Component<IProps, IState> {
         cellDataArray[colIdx] = basicAccountIdArray.reduce((prev, basicAccountId) => {
           const sign =
             DocTypes.basicAccountKindToAccountKind(basicAccounts[basicAccountId].kind) !==
-              DocTypes.AccountKind.Liabilities
+            DocTypes.AccountKind.Liabilities
               ? 1
               : -1;
           return prev + sign * accountCellDataArray[Number(basicAccountId)][colIdx];

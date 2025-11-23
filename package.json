@@ -37,7 +37,8 @@
       "target": [
         "dmg"
       ],
-      "category": "public.app-category.finance"
+      "category": "public.app-category.finance",
+      "artifactName": "${productName}-${version}.${ext}"
     }
   },
   "dependencies": {

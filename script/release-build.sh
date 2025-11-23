@@ -12,7 +12,7 @@ rm -rf ./build/mac
 export WEBPACK_OPTION="--env prod" && bash ./script/build-impl.sh
 
 # パッケージング
-NODE_ENV=production electron-builder --mac --x64
+NODE_ENV=production electron-builder --mac --universal
 
 #------------------------------------------------------------------------------
 # EOF

@@ -50,7 +50,7 @@ class Main extends React.Component<ILocalProps, IState> {
     super(props);
     global.console.assert(
       this.props.accountKind === DocTypes.AccountKind.Assets ||
-      this.props.accountKind === DocTypes.AccountKind.Liabilities,
+        this.props.accountKind === DocTypes.AccountKind.Liabilities,
     );
     if (props.editAccountId !== null) {
       const account = DocStateMethods.basicAccounts(props.doc)[props.editAccountId];
@@ -111,8 +111,9 @@ class Main extends React.Component<ILocalProps, IState> {
     const header = (
       <div className={dialogHeaderClass}>
         <h5 className="modal-title" id="exampleModalLabel">
-          {`${this.props.accountKind === DocTypes.AccountKind.Assets ? '資産口座' : '負債口座'}の${this.props.editAccountId !== null ? '編集' : '作成'
-            }`}
+          {`${this.props.accountKind === DocTypes.AccountKind.Assets ? '資産口座' : '負債口座'}の${
+            this.props.editAccountId !== null ? '編集' : '作成'
+          }`}
         </h5>
         <button type="button" id={this.elementIdCloseBtn} className="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>

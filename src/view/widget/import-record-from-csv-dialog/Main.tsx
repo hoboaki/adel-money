@@ -20,7 +20,6 @@ import BasicStyles from 'src/view/Basic.css';
 import * as NativeDialogUtils from 'src/view/widget/native-dialog-utils';
 import { v4 as UUID } from 'uuid';
 
-
 import Styles from './Main.css';
 
 interface IProps {

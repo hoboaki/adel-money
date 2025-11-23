@@ -11,7 +11,6 @@ import IStoreState from 'src/state/IStoreState';
 import Store from 'src/state/Store';
 import * as UiActions from 'src/state/ui/Actions';
 import BasicStyles from 'src/view/Basic.css';
-import * as NativeDialogUtils from 'src/view/widget/native-dialog-utils';
 import { v4 as UUID } from 'uuid';
 
 import Styles from './Main.css';

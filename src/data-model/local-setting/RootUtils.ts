@@ -1,5 +1,5 @@
-import Storage from 'electron-json-storage';
 import * as remote from '@electron/remote';
+import Storage from 'electron-json-storage';
 
 import Root from './Root';
 

@@ -1,6 +1,6 @@
+import * as remote from '@electron/remote';
 import ClassNames from 'classnames';
 import { Menu } from 'electron';
-import * as remote from '@electron/remote';
 import * as React from 'react';
 import * as ReactRedux from 'react-redux';
 import Sortable from 'sortablejs';

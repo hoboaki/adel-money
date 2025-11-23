@@ -1,6 +1,6 @@
+import * as remote from '@electron/remote';
 import ClassNames from 'classnames';
 import { Menu } from 'electron';
-import * as remote from '@electron/remote';
 import * as React from 'react';
 import PageCalendar from 'src/view/page/calendar';
 import PageImport from 'src/view/page/import';

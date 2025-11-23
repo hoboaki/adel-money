@@ -1,4 +1,4 @@
-import { combineReducers, createStore, Store } from 'redux';
+import { Action, combineReducers, createStore, Store } from 'redux';
 
 import DocReducer from './doc/Reducer';
 import IStoreState from './IStoreState';
@@ -12,5 +12,5 @@ const combinedReducer = combineReducers({
 });
 
 // グローバルオブジェクトとして、store を作成する。
-const store: Store<IStoreState, any> = createStore(combinedReducer);
+const store: Store<IStoreState, Action> = createStore(combinedReducer);
 export default store;

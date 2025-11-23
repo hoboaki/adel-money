@@ -335,38 +335,42 @@ export const toData = (state: States.IState) => {
   }
 
   // Palmカテゴリ情報
-  for (const key in state.importTool.palmCategories.income) {
-    // eslint-disable-next-line no-prototype-builtins
-    if (!state.importTool.palmCategories.income.hasOwnProperty(key)) {
-      continue;
-    }
-    const src = state.importTool.palmCategories.income[key];
-    const data = new DataPalmCategoryInfo();
-    data.name = key;
-    if (src.account !== Types.INVALID_ID) {
-      data.account = basicAccountIdDict[src.account];
-    }
-    if (src.category !== Types.INVALID_ID) {
-      data.category = incomeCategoryIdDict[src.category];
-    }
-    result.importTool.palmCategories.income.push(data);
-  }
-  for (const key in state.importTool.palmCategories.outgo) {
-    // eslint-disable-next-line no-prototype-builtins
-    if (!state.importTool.palmCategories.outgo.hasOwnProperty(key)) {
-      continue;
-    }
-    const src = state.importTool.palmCategories.outgo[key];
-    const data = new DataPalmCategoryInfo();
-    data.name = key;
-    if (src.account !== Types.INVALID_ID) {
-      data.account = basicAccountIdDict[src.account];
-    }
-    if (src.category !== Types.INVALID_ID) {
-      data.category = outgoCategoryIdDict[src.category];
-    }
-    result.importTool.palmCategories.outgo.push(data);
-  }
+  Object.keys(state.importTool.palmCategories.income)
+    .sort()
+    .forEach((key) => {
+      // eslint-disable-next-line no-prototype-builtins
+      if (!state.importTool.palmCategories.income.hasOwnProperty(key)) {
+        return;
+      }
+      const src = state.importTool.palmCategories.income[key];
+      const data = new DataPalmCategoryInfo();
+      data.name = key;
+      if (src.account !== Types.INVALID_ID) {
+        data.account = basicAccountIdDict[src.account];
+      }
+      if (src.category !== Types.INVALID_ID) {
+        data.category = incomeCategoryIdDict[src.category];
+      }
+      result.importTool.palmCategories.income.push(data);
+    });
+  Object.keys(state.importTool.palmCategories.outgo)
+    .sort()
+    .forEach((key) => {
+      // eslint-disable-next-line no-prototype-builtins
+      if (!state.importTool.palmCategories.outgo.hasOwnProperty(key)) {
+        return;
+      }
+      const src = state.importTool.palmCategories.outgo[key];
+      const data = new DataPalmCategoryInfo();
+      data.name = key;
+      if (src.account !== Types.INVALID_ID) {
+        data.account = basicAccountIdDict[src.account];
+      }
+      if (src.category !== Types.INVALID_ID) {
+        data.category = outgoCategoryIdDict[src.category];
+      }
+      result.importTool.palmCategories.outgo.push(data);
+    });
 
   // 結果を返す
   return result;

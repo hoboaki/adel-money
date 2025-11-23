@@ -2,7 +2,7 @@ import 'flatpickr/dist/l10n/ja.js';
 import 'src/@types/mdb/modal';
 
 import ClassNames from 'classnames';
-import CsvParse from 'csv-parse/lib/sync';
+import { parse } from 'csv-parse/sync';
 import * as React from 'react';
 import * as ReactRedux from 'react-redux';
 import * as DocActions from 'src/state/doc/Actions';
@@ -16,11 +16,12 @@ import * as UiActions from 'src/state/ui/Actions';
 import IYearMonthDayDate from 'src/util/IYearMonthDayDate';
 import * as IYearMonthDayDateUtils from 'src/util/IYearMonthDayDateUtils';
 import * as PriceUtils from 'src/util/PriceUtils';
-import * as BasicStyles from 'src/view/Basic.css';
+import BasicStyles from 'src/view/Basic.css';
 import * as NativeDialogUtils from 'src/view/widget/native-dialog-utils';
 import { v4 as UUID } from 'uuid';
 
-import * as Styles from './Main.css';
+
+import Styles from './Main.css';
 
 interface IProps {
   /** 処理する csv テキスト。 */
@@ -98,7 +99,7 @@ class Main extends React.Component<ILocalProps, IState> {
       }
 
       // 行解析
-      const cols = CsvParse(line, { columns: false })[0] as string[];
+      const cols = parse(line, { columns: false })[0] as string[];
       const incomeText = cols[2].replace(',', '');
       const incomeNumber = parseInt(incomeText);
       const income = isNaN(incomeNumber) ? null : incomeNumber;
@@ -594,8 +595,9 @@ class Main extends React.Component<ILocalProps, IState> {
     e.stopPropagation();
 
     // 未入力チェック
-    const notSelectedCount = this.state.csvRows.filter((row) => row.kind !== RowKind.Invalid && row.group === null)
-      .length;
+    const notSelectedCount = this.state.csvRows.filter(
+      (row) => row.kind !== RowKind.Invalid && row.group === null,
+    ).length;
     if (0 < notSelectedCount) {
       if (
         !NativeDialogUtils.showOkCancelDialog(

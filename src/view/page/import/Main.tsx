@@ -1,13 +1,13 @@
 import ClassNames from 'classnames';
-import { remote } from 'electron';
+import * as remote from '@electron/remote';
 import * as Fs from 'fs';
 import * as React from 'react';
-import * as PageStyles from 'src/view/page/Page.css';
+import PageStyles from 'src/view/page/Page.css';
 import ImportRecordFromCsvDialog from 'src/view/widget/import-record-from-csv-dialog';
 import * as NativeDialogUtils from 'src/view/widget/native-dialog-utils';
 
 import Btn from './Btn';
-import * as Styles from './Main.css';
+import Styles from './Main.css';
 
 interface IState {
   csvText: string;

@@ -1,16 +1,16 @@
-import { combineReducers, createStore } from 'redux';
+import { combineReducers, createStore, Store } from 'redux';
 
 import DocReducer from './doc/Reducer';
 import IStoreState from './IStoreState';
 import UiReducer from './ui/Reducer';
 
 // 複数の reducer を束ねる
-const combinedReducer = combineReducers<IStoreState>({
+const combinedReducer = combineReducers({
   doc: DocReducer,
   ui: UiReducer,
   // reducer が増えたら足していく
 });
 
 // グローバルオブジェクトとして、store を作成する。
-const store = createStore(combinedReducer);
+const store: Store<IStoreState, any> = createStore(combinedReducer);
 export default store;

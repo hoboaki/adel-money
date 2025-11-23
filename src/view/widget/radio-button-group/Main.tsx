@@ -1,7 +1,7 @@
 // import ClassNames from 'classnames';
 import * as React from 'react';
 
-import * as Styles from './Main.css';
+import Styles from './Main.css';
 
 interface IBtnInfo {
   /** ラベル。 */

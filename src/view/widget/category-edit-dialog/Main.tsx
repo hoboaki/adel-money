@@ -10,10 +10,11 @@ import * as DocTypes from 'src/state/doc/Types';
 import IStoreState from 'src/state/IStoreState';
 import Store from 'src/state/Store';
 import * as UiActions from 'src/state/ui/Actions';
-import * as BasicStyles from 'src/view/Basic.css';
+import BasicStyles from 'src/view/Basic.css';
+import * as NativeDialogUtils from 'src/view/widget/native-dialog-utils';
 import { v4 as UUID } from 'uuid';
 
-import * as Styles from './Main.css';
+import Styles from './Main.css';
 
 interface IProps {
   /** 追加・編集するカテゴリ種類。 */
@@ -47,7 +48,7 @@ class Main extends React.Component<ILocalProps, IState> {
     super(props);
     global.console.assert(
       this.props.categoryKind === DocTypes.CategoryKind.Income ||
-        this.props.categoryKind === DocTypes.CategoryKind.Outgo,
+      this.props.categoryKind === DocTypes.CategoryKind.Outgo,
     );
     if (props.editCategoryId !== null) {
       const category = DocStateMethods.categoryById(props.doc, props.editCategoryId);
@@ -82,9 +83,8 @@ class Main extends React.Component<ILocalProps, IState> {
     const header = (
       <div className={dialogHeaderClass}>
         <h5 className="modal-title" id="exampleModalLabel">
-          {`${this.props.categoryKind === DocTypes.CategoryKind.Income ? '収入カテゴリ' : '支出カテゴリ'}の${
-            this.props.editCategoryId !== null ? '編集' : '作成'
-          }`}
+          {`${this.props.categoryKind === DocTypes.CategoryKind.Income ? '収入カテゴリ' : '支出カテゴリ'}の${this.props.editCategoryId !== null ? '編集' : '作成'
+            }`}
         </h5>
         <button type="button" id={this.elementIdCloseBtn} className="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>

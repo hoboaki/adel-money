@@ -10,7 +10,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
     'plugin:prettier/recommended',
-    'prettier/@typescript-eslint',
+    'prettier',
   ],
   plugins: ['simple-import-sort', '@typescript-eslint'],
   env: { node: true, es6: true },
@@ -28,7 +28,8 @@ module.exports = {
   rules: {
     'no-constant-condition': [OFF],
     quotes: [ERROR, 'single', { avoidEscape: true, allowTemplateLiterals: true }],
-    'simple-import-sort/sort': [ERROR],
+    'simple-import-sort/imports': [ERROR],
+    'simple-import-sort/exports': [ERROR],
     '@typescript-eslint/explicit-function-return-type': [OFF],
     '@typescript-eslint/interface-name-prefix': [OFF],
     '@typescript-eslint/no-use-before-define': [OFF],
@@ -40,5 +41,12 @@ module.exports = {
         ignoreRestSiblings: false,
       },
     ],
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
+
   },
 };

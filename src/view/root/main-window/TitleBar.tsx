@@ -5,7 +5,7 @@ import IStoreState from 'src/state/IStoreState';
 import * as UiStateMethods from 'src/state/ui/StateMethods';
 import * as UiStates from 'src/state/ui/States';
 
-import * as Styles from './TitleBar.css';
+import Styles from './TitleBar.css';
 
 interface IProps {
   isActive: boolean;

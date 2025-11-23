@@ -1,5 +1,6 @@
 import ClassNames from 'classnames';
-import { Menu, remote } from 'electron';
+import { Menu } from 'electron';
+import * as remote from '@electron/remote';
 import * as React from 'react';
 import * as ReactRedux from 'react-redux';
 import Sortable from 'sortablejs';
@@ -10,16 +11,16 @@ import * as DocTypes from 'src/state/doc/Types';
 import IStoreState from 'src/state/IStoreState';
 import Store from 'src/state/Store';
 import * as UiActions from 'src/state/ui/Actions';
-import * as BasicStyles from 'src/view/Basic.css';
-import * as LayoutStyles from 'src/view/Layout.css';
-import * as PageStyles from 'src/view/page/Page.css';
+import BasicStyles from 'src/view/Basic.css';
+import LayoutStyles from 'src/view/Layout.css';
+import PageStyles from 'src/view/page/Page.css';
 import CategoryEditDialog from 'src/view/widget/category-edit-dialog';
 import MaterialIcon from 'src/view/widget/material-icon';
 import * as NativeDialogUtils from 'src/view/widget/native-dialog-utils';
 import RadioButtonGroup from 'src/view/widget/radio-button-group';
 import { v4 as UUID } from 'uuid';
 
-import * as Styles from './Category.css';
+import Styles from './Category.css';
 import Header from './Header';
 
 enum ModalState {

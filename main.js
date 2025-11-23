@@ -4,6 +4,7 @@
  */
 const { app, globalShortcut, BrowserWindow, Menu } = require('electron');
 const windowStateKeeper = require('electron-window-state');
+require('@electron/remote/main').initialize();
 
 //------------------------------------------------------------------------------
 // メニューバー設定
@@ -14,21 +15,21 @@ const template = [
   // { role: 'appMenu' }
   ...(isMac
     ? [
-        {
-          label: '', // 強制的に上書きされるので空文字列にしておく
-          submenu: [
-            { role: 'about', label: `${appDisplayName}について` },
-            { type: 'separator' },
-            { role: 'services', label: 'サービス' },
-            { type: 'separator' },
-            { role: 'hide', label: `${appDisplayName}を隠す` },
-            { role: 'hideothers', label: 'ほかを隠す' },
-            { role: 'unhide', label: 'すべてを表示' },
-            { type: 'separator' },
-            { role: 'quit', label: `${appDisplayName}を終了` },
-          ],
-        },
-      ]
+      {
+        label: '', // 強制的に上書きされるので空文字列にしておく
+        submenu: [
+          { role: 'about', label: `${appDisplayName}について` },
+          { type: 'separator' },
+          { role: 'services', label: 'サービス' },
+          { type: 'separator' },
+          { role: 'hide', label: `${appDisplayName}を隠す` },
+          { role: 'hideothers', label: 'ほかを隠す' },
+          { role: 'unhide', label: 'すべてを表示' },
+          { type: 'separator' },
+          { role: 'quit', label: `${appDisplayName}を終了` },
+        ],
+      },
+    ]
     : []),
   // { role: 'fileMenu' }
   {
@@ -56,15 +57,15 @@ const template = [
       { role: 'paste', label: 'ペースト' },
       ...(isMac
         ? [
-            { role: 'pasteAndMatchStyle', label: 'ペーストしてスタイルを合わせる' },
-            { role: 'delete', label: '削除' },
-            { role: 'selectAll', label: 'すべてを選択' },
-            { type: 'separator' },
-            {
-              label: 'スピーチ',
-              submenu: [{ role: 'startspeaking' }, { role: 'stopspeaking' }],
-            },
-          ]
+          { role: 'pasteAndMatchStyle', label: 'ペーストしてスタイルを合わせる' },
+          { role: 'delete', label: '削除' },
+          { role: 'selectAll', label: 'すべてを選択' },
+          { type: 'separator' },
+          {
+            label: 'スピーチ',
+            submenu: [{ role: 'startspeaking' }, { role: 'stopspeaking' }],
+          },
+        ]
         : [{ role: 'delete', label: '削除' }, { type: 'separator' }, { role: 'selectAll', label: 'すべてを選択' }]),
     ],
   },
@@ -143,11 +144,13 @@ function createWindow() {
     backgroundColor: '#f5f5f6',
     webPreferences: {
       devTools: isDev,
-      enableRemoteModule: true,
       nodeIntegration: true,
+      contextIsolation: false,
     },
   });
   state.manage(newWindow);
+  require('@electron/remote/main').enable(newWindow.webContents);
+
   //newWindow.setMenuBarVisibility(false);
 
   // ウィンドウ管理追加処理
@@ -180,14 +183,14 @@ function createWindow() {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', function() {
+app.on('ready', function () {
   Menu.setApplicationMenu(menu);
   app.dock.setMenu(dockMenu);
   createWindow();
 });
 
 // Quit when all windows are closed.
-app.on('window-all-closed', function() {
+app.on('window-all-closed', function () {
   // On OS X it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== 'darwin') {
@@ -195,7 +198,7 @@ app.on('window-all-closed', function() {
   }
 });
 
-app.on('activate', function() {
+app.on('activate', function () {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (windows.length === 0) {

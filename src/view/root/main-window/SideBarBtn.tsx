@@ -1,7 +1,7 @@
 import ClassNames from 'classnames';
 import * as React from 'react';
 
-import * as Styles from './SideBarBtn.css';
+import Styles from './SideBarBtn.css';
 
 interface IProps {
   onClicked: () => void;

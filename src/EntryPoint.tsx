@@ -5,7 +5,7 @@
 import 'flatpickr/dist/themes/dark.css';
 
 import React from 'react';
-import ReactDom from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 
 import AutoSaveManager from './AutoSaveManager';
@@ -22,12 +22,14 @@ requireAll((require as any).context('./', true, /\.css$/));
 
 // 描画
 const container = document.getElementById('contents');
-ReactDom.render(
-  <Provider store={Store}>
-    <AutoSaveManager />
-    <MainWindow />
-  </Provider>,
-  container,
-);
+if (container) {
+  const root = createRoot(container);
+  root.render(
+    <Provider store={Store}>
+      <AutoSaveManager />
+      <MainWindow />
+    </Provider>,
+  );
+}
 
 // EOF

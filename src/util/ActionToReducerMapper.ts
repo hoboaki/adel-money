@@ -1,4 +1,4 @@
-import Clone from 'deep-clone';
+import { cloneDeep } from 'lodash';
 import { Action } from 'redux';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -22,7 +22,7 @@ class ActionToReducerMapper<S> {
     let newState = state;
     const process = this.works[action.type];
     if (process) {
-      newState = Clone(state);
+      newState = cloneDeep(state as any) as S;
       process(newState, action);
     }
     return newState;

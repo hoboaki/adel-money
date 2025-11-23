@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import Balance from './Balance';
-import * as Styles from './Body.css';
+import Styles from './Body.css';
 import Calendar from './Calendar';
 
 class Body extends React.Component {

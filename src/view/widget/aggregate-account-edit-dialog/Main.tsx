@@ -9,10 +9,11 @@ import * as DocStates from 'src/state/doc/States';
 import IStoreState from 'src/state/IStoreState';
 import Store from 'src/state/Store';
 import * as UiActions from 'src/state/ui/Actions';
-import * as BasicStyles from 'src/view/Basic.css';
+import BasicStyles from 'src/view/Basic.css';
+import * as NativeDialogUtils from 'src/view/widget/native-dialog-utils';
 import { v4 as UUID } from 'uuid';
 
-import * as Styles from './Main.css';
+import Styles from './Main.css';
 
 interface IProps {
   /** 編集する場合は口座のIDを指定。 */

@@ -7,12 +7,12 @@ import * as UiActions from 'src/state/ui/Actions';
 import * as UiStates from 'src/state/ui/States';
 import * as UiTypes from 'src/state/ui/Types';
 import * as IYearMonthDayDateUtils from 'src/util/IYearMonthDayDateUtils';
-import * as BasicStyles from 'src/view/Basic.css';
-import * as LayoutStyles from 'src/view/Layout.css';
+import BasicStyles from 'src/view/Basic.css';
+import LayoutStyles from 'src/view/Layout.css';
 import MaterialIcon from 'src/view/widget/material-icon';
 import { v4 as UUID } from 'uuid';
 
-import * as Styles from './Header.css';
+import Styles from './Header.css';
 
 class Header extends React.Component<UiStates.IPageSheet> {
   private elemIdJumpBtn: string;

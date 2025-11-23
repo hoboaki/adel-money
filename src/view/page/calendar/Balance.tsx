@@ -10,7 +10,7 @@ import * as RecordFilters from 'src/util/doc/RecordFilters';
 import * as IYearMonthDayDateUtils from 'src/util/IYearMonthDayDateUtils';
 import * as PriceUtils from 'src/util/PriceUtils';
 
-import * as Styles from './Balance.css';
+import Styles from './Balance.css';
 
 interface IProps {
   doc: DocStates.IState;

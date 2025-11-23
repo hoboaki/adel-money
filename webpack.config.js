@@ -72,6 +72,9 @@ module.exports = (env) => {
     },
     // プラグイン設定
     plugins: [new ESLintPlugin({ extensions: ['ts', 'tsx'] })],
-
+    // ビルド時に Prettier/ESLint エラーを表示する設定
+    stats: {
+      children: true,
+    },
   };
 };
